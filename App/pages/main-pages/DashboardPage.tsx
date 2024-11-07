@@ -99,9 +99,8 @@ export default function DashboardPage(
           />
         )}
         showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() => (
-          <View>
-            <UserTopBar user={user} />
+        ListFooterComponent={() => {
+          return (
             <Swiper
               style={styles.wrapper}
               showsButtons={false}
@@ -141,22 +140,17 @@ export default function DashboardPage(
                 />
               </View>
             </Swiper>
-            <TouchableOpacity style={styles.live}>
-              <View style={styles.liveText}>
-                <View style={styles.liveIcon}>
-                  <LiveIcon />
-                </View>
-                <Text
-                  style={{
-                    color: "#fff",
-                  }}
-                >
-                  Live Update
-                </Text>
-              </View>
+          );
+        }}
+        ListHeaderComponent={() => (
+          <View>
+            <UserTopBar user={user} />
 
-              <UpdateRightIcon />
-            </TouchableOpacity>
+            <View style={styles.wallet}>
+              <Text style={styles.walletTitle}>Your Earnings this week</Text>
+              <Text style={styles.walletAmount}>#180,000</Text>
+            </View>
+            <View style={styles.walletB}></View>
 
             <View style={styles.orderListTop}>
               <Text
@@ -166,7 +160,7 @@ export default function DashboardPage(
                   color: Colors.DARK_GREY,
                 }}
               >
-                Recent Deliveries
+                Ongoing Pickups
               </Text>
               <Text
                 onPress={() => {
@@ -267,5 +261,30 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: screenWidth(0.026),
     paddingVertical: screenWidth(0.032),
+  },
+  wallet: {
+    backgroundColor: Colors.DARKER_BLUE,
+    padding: screenWidth(0.062),
+    borderRadius: 11,
+  },
+  walletB: {
+    backgroundColor: Colors.DARKER_BLUE,
+    height: screenHeight(0.01),
+    width: "95%",
+    alignSelf: "center",
+    opacity: 0.7,
+    marginBottom: screenHeight(0.03),
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  walletTitle: {
+    color: "#fff",
+    marginBottom: screenHeight(0.003),
+    fontFamily: "regular500",
+  },
+  walletAmount: {
+    color: "#fff",
+    fontFamily: "regular600",
+    fontSize: screenWidth(0.092),
   },
 });

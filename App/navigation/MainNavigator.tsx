@@ -21,6 +21,7 @@ import PlaceOrderButton from "App/assets/icons/PlaceOrderButton";
 import { SvgUri } from "react-native-svg";
 import { OrdersNavigator } from "./OrdersNavigator";
 import * as Haptics from "expo-haptics";
+import EarningsIcon from "App/assets/icons/EarningsIcon";
 const MainStack = createBottomTabNavigator<MainStackParamList>();
 
 export const MainNavigator: React.FC = () => {
@@ -73,43 +74,7 @@ export const MainNavigator: React.FC = () => {
           ),
         }}
       />
-      <MainStack.Screen
-        name="PlaceOrders"
-        component={PlaceOrdersPage}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TouchableOpacity
-              onPress={() => {
-                Haptics.selectionAsync();
-                navigation.navigate("MainPlaceOrdersPage"); // Navigate to Profile screen
-              }}
-              style={{
-                backgroundColor: Colors.LIGHT_BLUE,
-                paddingHorizontal: screenWidth(0.04),
-                width: screenWidth(0.38),
-                marginTop: -screenHeight(0.09),
-                paddingVertical: screenHeight(0.018),
-                borderRadius: 999,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 10,
-              }}
-            >
-              <PlaceOrderButton />
-              <Text
-                style={{
-                  color: "#fff",
-                }}
-              >
-                Place Order
-              </Text>
-            </TouchableOpacity>
-          ),
-          tabBarLabel: ({ focused }) => <Text></Text>,
-        }}
-      />
+
       <MainStack.Screen
         name="Orders"
         component={OrdersNavigator}
@@ -137,7 +102,40 @@ export const MainNavigator: React.FC = () => {
                 Haptics.selectionAsync();
               }}
             >
-              My Orders
+              Deliveries
+            </Text>
+          ),
+        }}
+      />
+
+      <MainStack.Screen
+        name="Earnings"
+        component={PlaceOrdersPage}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <EarningsIcon
+              onPress={() => {
+                navigation.navigate("Orders");
+                Haptics.selectionAsync();
+              }}
+              fill={focused ? Colors.DARK_GREY : Colors.OTHER_GREY}
+            />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text
+              style={{
+                fontFamily: "regular500",
+                fontSize: screenWidth(0.039),
+
+                color: focused ? Colors.DARK_GREY : Colors.OTHER_GREY,
+              }}
+              onPress={() => {
+                navigation.navigate("Orders");
+                Haptics.selectionAsync();
+              }}
+            >
+              Earnings
             </Text>
           ),
         }}
