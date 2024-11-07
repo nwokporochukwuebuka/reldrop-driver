@@ -1,6 +1,7 @@
 {
   "name": "reldrop-driver",
   "slug": "reldrop-driver",
+  "icon": "./App/assets/icons/appIcon3.png",
   "plugins": [
     [
       "expo-secure-store",

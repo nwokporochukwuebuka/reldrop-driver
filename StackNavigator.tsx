@@ -37,7 +37,7 @@ const StackNavigator = () => {
         {isAuth === null ? (
           <>
             <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
-            {/* <Stack.Screen name="SuccessFulPage" component={SuccessFulPage} /> */}
+            <Stack.Screen name="SuccessFulPage" component={SuccessFulPage} />
           </>
         ) : (
           <>

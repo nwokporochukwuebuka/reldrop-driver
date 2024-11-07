@@ -43,7 +43,7 @@ export default function LoginPage(
       save("token", data?.access_token);
     },
     onError: (error) => {
-      console.log(error?.response, "errorerror");
+      console.log(error?.response?.data, "errorerror");
       return;
     },
   });

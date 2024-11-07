@@ -53,7 +53,7 @@ export default function CreateAccountPage(
           country_code: 234,
           number: values.phone_number,
         },
-        account_type: "customer",
+        account_type: "rider",
       }),
   });
   return (
