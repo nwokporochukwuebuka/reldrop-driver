@@ -102,7 +102,7 @@ export default function OrderCard({
                 text="Rebook"
                 width={
                   Platform.OS === "android"
-                    ? screenWidth(0.24)
+                    ? screenWidth(0.19)
                     : screenWidth(0.18)
                 }
                 height={screenWidth(0.07)}
@@ -119,7 +119,7 @@ export default function OrderCard({
                 text="Rebook"
                 width={
                   Platform.OS === "android"
-                    ? screenWidth(0.24)
+                    ? screenWidth(0.19)
                     : screenWidth(0.18)
                 }
                 height={screenWidth(0.07)}

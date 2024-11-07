@@ -38,7 +38,7 @@ export function OrdersNavigator() {
           tabBarLabelStyle: {
             fontSize:
               Platform.OS === "android"
-                ? screenWidth(0.032)
+                ? screenWidth(0.03)
                 : screenWidth(0.033),
             color: Colors.LIGHT_BLUE,
             fontFamily: "regular500",

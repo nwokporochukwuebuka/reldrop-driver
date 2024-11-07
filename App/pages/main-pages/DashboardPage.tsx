@@ -101,45 +101,88 @@ export default function DashboardPage(
         showsVerticalScrollIndicator={false}
         ListFooterComponent={() => {
           return (
-            <Swiper
-              style={styles.wrapper}
-              showsButtons={false}
-              showsPagination={false}
-            >
-              <View style={styles.slide}>
-                <Image
-                  style={{
-                    width: "94%",
-                    height: screenHeight(0.14),
-                    alignSelf: "center",
-                    borderRadius: 10,
-                  }}
-                  source={require("App/assets/images/DashHeroImg.png")}
+            <FlatList
+              data={orders}
+              renderItem={({ item, index }) => (
+                <OrderCard
+                  key={index}
+                  item={item}
+                  keyIndex={index}
+                  listLength={orders?.length}
                 />
-              </View>
-              <View style={styles.slide}>
-                <Image
-                  style={{
-                    width: "94%",
-                    height: screenHeight(0.14),
-                    alignSelf: "center",
-                    borderRadius: 10,
-                  }}
-                  source={require("App/assets/images/DashHeroImg.png")}
-                />
-              </View>
-              <View style={styles.slide}>
-                <Image
-                  style={{
-                    width: "94%",
-                    height: screenHeight(0.14),
-                    alignSelf: "center",
-                    borderRadius: 10,
-                  }}
-                  source={require("App/assets/images/DashHeroImg.png")}
-                />
-              </View>
-            </Swiper>
+              )}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={() => {
+                return (
+                  <Swiper
+                    style={styles.wrapper}
+                    showsButtons={false}
+                    showsPagination={false}
+                  >
+                    <View style={styles.slide}>
+                      <Image
+                        style={{
+                          width: "94%",
+                          height: screenHeight(0.14),
+                          alignSelf: "center",
+                          borderRadius: 10,
+                        }}
+                        source={require("App/assets/images/DashHeroImg.png")}
+                      />
+                    </View>
+                    <View style={styles.slide}>
+                      <Image
+                        style={{
+                          width: "94%",
+                          height: screenHeight(0.14),
+                          alignSelf: "center",
+                          borderRadius: 10,
+                        }}
+                        source={require("App/assets/images/DashHeroImg.png")}
+                      />
+                    </View>
+                    <View style={styles.slide}>
+                      <Image
+                        style={{
+                          width: "94%",
+                          height: screenHeight(0.14),
+                          alignSelf: "center",
+                          borderRadius: 10,
+                        }}
+                        source={require("App/assets/images/DashHeroImg.png")}
+                      />
+                    </View>
+                  </Swiper>
+                );
+              }}
+              ListHeaderComponent={() => (
+                <View>
+                  <View style={styles.orderListTop}>
+                    <Text
+                      style={{
+                        fontFamily: "regular300",
+                        fontSize: screenWidth(0.045),
+                        color: Colors.DARK_GREY,
+                      }}
+                    >
+                      Scheduled Deliveries
+                    </Text>
+                    <Text
+                      onPress={() => {
+                        navigation.navigate("Orders");
+                      }}
+                      style={{
+                        fontFamily: "regular500",
+                        fontSize: screenWidth(0.04),
+                        textDecorationLine: "underline",
+                      }}
+                    >
+                      View all
+                    </Text>
+                  </View>
+                </View>
+              )}
+            />
           );
         }}
         ListHeaderComponent={() => (
@@ -155,7 +198,7 @@ export default function DashboardPage(
             <View style={styles.orderListTop}>
               <Text
                 style={{
-                  fontFamily: "regular500",
+                  fontFamily: "regular300",
                   fontSize: screenWidth(0.045),
                   color: Colors.DARK_GREY,
                 }}
