@@ -17,7 +17,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function OrdersPage(
+export default function ScheduledOrdersPage(
   props: React.JSX.IntrinsicAttributes &
     React.JSX.IntrinsicClassAttributes<View> &
     Readonly<ViewProps>
@@ -26,21 +26,14 @@ export default function OrdersPage(
 
   const orders = [
     {
-      status: "Cancelled",
+      status: "Scheduled",
       date: "9th Mar",
       time: "16:22",
       address: "3a Sulaimon Shoderu Street",
       amount: "N2,800",
     },
     {
-      status: "Completed",
-      date: "9th Mar",
-      time: "16:22",
-      address: "3a Sulaimon Shoderu Street",
-      amount: "N2,800",
-    },
-    {
-      status: "In progress...",
+      status: "Scheduled",
       date: "9th Mar",
       time: "16:22",
       address: "3a Sulaimon Shoderu Street",
@@ -58,6 +51,7 @@ export default function OrdersPage(
     <View style={style.body}>
       <FlatList
         data={orders}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => (
           <OrderCard
             key={index}

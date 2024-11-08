@@ -12,6 +12,7 @@ export type AuthStackParamList = {
   
   export type MainStackParamList = {
     Home: undefined;
+    EarningsPage: undefined;
     Orders: undefined;
     PlaceOrders: undefined;
     MainPlaceOrdersPage: undefined;
@@ -28,6 +29,7 @@ export type AuthStackParamList = {
 
   export type DrawerStackParamList = {
     Home: undefined;
+    EarningsPage: undefined;
     Orders: undefined;
     PlaceOrders: undefined;
     Tabs: undefined;
@@ -40,9 +42,11 @@ export type AuthStackParamList = {
 
   export type OrdersStackParamList = {
     All: undefined;
+    EarningsPage: undefined;
     Ongoing: undefined;
     Completed: undefined;
     Cancelled: undefined;
+    Scheduled: undefined;
     MainPlaceOrdersPage: undefined;
     TrackOrderPage: undefined;
     SuccessFulPage:undefined

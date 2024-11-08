@@ -31,6 +31,7 @@ interface FormInputProps {
   IconRight?: React.FC<{ width: string; height: string }>;
   IconLeft?: React.FC<{ width: string; height: string }>;
   hint?: string;
+  icon?: string;
   options: Array<object>;
 }
 
@@ -47,6 +48,8 @@ const FormSelect: React.FC<FormInputProps> = ({
   formik,
   options,
   hint,
+  icon,
+  defaultValue,
 }) => {
   return (
     <View style={{ width: width, marginBottom: bottom }}>
@@ -54,10 +57,10 @@ const FormSelect: React.FC<FormInputProps> = ({
         <Text style={[styles.label, { color: labelColor }]}>{label}</Text>
       )}
       <Select
-        selectedValue={formik?.values?.[name]}
+        selectedValue={formik?.values?.[name] || defaultValue}
         dropdownIcon={
           <View style={{ paddingRight: 10 }}>
-            <DropDownIcon />
+            {icon ? icon : <DropDownIcon />}
           </View>
         }
         isDisabled={disabled}

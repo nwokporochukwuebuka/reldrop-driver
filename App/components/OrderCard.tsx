@@ -6,6 +6,7 @@ import { View, Text, StyleSheet, ViewProps, Platform } from "react-native";
 import MainAppButton from "./bits/MainAppButton";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { OrdersStackParamList } from "App/types/navigation";
+import BoxIcon from "App/assets/icons/BoxIcon";
 
 interface ItemProps {
   item?: {
@@ -50,7 +51,7 @@ export default function OrderCard({
       <View style={styles.slide}>
         <View style={styles.slide2}>
           <View style={styles.liveIcon}>
-            <BikeIcon />
+            {item?.status === "Scheduled" ? <BoxIcon /> : <BikeIcon />}
           </View>
           <View>
             <Text style={styles.address}>{item?.address}....</Text>
@@ -112,6 +113,26 @@ export default function OrderCard({
                 backgroundColor={Colors.LIGHT_BLUE}
                 borderColor={Colors.LIGHT_BLUE}
                 textColor={Colors.DEFAULT_WHITE}
+              />
+            )}
+            {item?.status === "Scheduled" && (
+              <MainAppButton
+                text="View"
+                width={
+                  Platform.OS === "android"
+                    ? screenWidth(0.2)
+                    : screenWidth(0.16)
+                }
+                height={screenWidth(0.07)}
+                fontSize={screenWidth(0.03)}
+                borderRadius={6}
+                padding={screenWidth(0.0004)}
+                backgroundColor={Colors.MAIN_BLACK}
+                borderColor={Colors.MAIN_BLACK}
+                textColor={Colors.DEFAULT_WHITE}
+                onPress={() => {
+                  navigation.navigate("TrackOrderPage");
+                }}
               />
             )}
             {item?.status === "Completed" && (

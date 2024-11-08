@@ -22,6 +22,7 @@ import { SvgUri } from "react-native-svg";
 import { OrdersNavigator } from "./OrdersNavigator";
 import * as Haptics from "expo-haptics";
 import EarningsIcon from "App/assets/icons/EarningsIcon";
+import EarningsPage from "App/pages/main-pages/EarningsPage";
 const MainStack = createBottomTabNavigator<MainStackParamList>();
 
 export const MainNavigator: React.FC = () => {
@@ -109,8 +110,8 @@ export const MainNavigator: React.FC = () => {
       />
 
       <MainStack.Screen
-        name="Earnings"
-        component={PlaceOrdersPage}
+        name="EarningsPage"
+        component={EarningsPage}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
