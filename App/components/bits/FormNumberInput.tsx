@@ -81,6 +81,7 @@ const FormNumberInput: React.FC<FormInputProps> = ({
             ]}
             keyboardType={type === "numeric" ? "numeric" : type}
             placeholder={placeholder}
+            autoCapitalize={name === "email" ? "none" : "sentences"}
             defaultValue={defaultValue}
             editable={!disabled}
             onChangeText={formik?.handleChange(name)}

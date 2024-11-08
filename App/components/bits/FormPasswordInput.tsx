@@ -83,6 +83,7 @@ const FormPasswordInput: React.FC<FormInputProps> = ({
             ]}
             secureTextEntry={open}
             keyboardType={type === "number" ? "numeric" : "default"}
+            autoCapitalize="none"
             placeholder={placeholder}
             defaultValue={defaultValue}
             editable={!disabled}
