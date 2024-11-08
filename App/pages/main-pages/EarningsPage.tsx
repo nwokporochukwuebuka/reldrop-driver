@@ -60,6 +60,7 @@ const Slip = ({ item, keyIndex }: ItemM) => {
         style={{
           flexDirection: "row",
           alignItems: "center",
+          width: "30%",
         }}
       >
         {item?.status === "Credit" ? <CreditIcon /> : <DebitIcon />}
