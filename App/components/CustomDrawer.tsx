@@ -275,13 +275,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: Colors.INVERT_BLUE,
     borderRadius: 999,
-    ...screenSize(0.2, 0.09),
+    ...screenSize(0.17, 0.08),
   },
   welcome: {
-    fontSize: screenWidth(0.055),
+    fontSize: screenWidth(0.045),
   },
   name: {
-    fontSize: screenWidth(0.055),
+    fontSize: screenWidth(0.045),
   },
 
   navItem: {
