@@ -10,6 +10,7 @@ import PlaceOrdersPage from "App/pages/main-pages/PlaceOrdersPage";
 import SettingsPage from "App/pages/main-pages/SettingsPage";
 import SupportPage from "App/pages/main-pages/SupportPage";
 import TrackOrderPage from "App/pages/main-pages/TrackOrderPage";
+import SplashAuth from "App/pages/SplashAuth";
 import { Alert, Slide } from "native-base";
 import { useContext, useEffect, useState } from "react";
 import { Text } from "react-native";
@@ -36,6 +37,7 @@ const StackNavigator = () => {
 
         {isAuth === null ? (
           <>
+            <Stack.Screen name="SplashAuth" component={SplashAuth} />
             <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
             <Stack.Screen name="SuccessFulPage" component={SuccessFulPage} />
           </>

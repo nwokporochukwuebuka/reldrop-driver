@@ -139,12 +139,17 @@ const CustomDrawer = () => {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
   const { isAuth, userData, logout } = useAuth();
 
+  const [loading, setLoading] = useState(false);
+
   const { mutate, isPending, error } = useMutation({
     mutationFn: ApiServiceAuth.LogoutMutation,
     onSuccess: (data) => {
       setTimeout(() => {
         navigation.navigate("AuthNavigator");
       }, 3000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
       console.log(data);
       logout();
     },
@@ -158,7 +163,7 @@ const CustomDrawer = () => {
   return (
     <View style={styles.top}>
       <UserCard user={userData} />
-      {isPending ? <Loader /> : <Text></Text>}
+      {loading ? <Loader /> : <Text></Text>}
       <FlatList
         data={drawerItems}
         renderItem={({ item, index }) => <NavItems key={index} item={item} />}
@@ -224,6 +229,7 @@ const CustomDrawer = () => {
                 textColor={Colors.DEFAULT_WHITE}
                 onPress={() => {
                   mutate({ token: isAuth });
+                  setLoading(true);
                   //clearSpecificKey("token");
                 }}
               />

@@ -3,7 +3,7 @@ import AppButton from "App/components/bits/AppButton";
 import Colors from "App/config/Colors";
 import { screenHeight, screenWidth } from "App/constants/Sizes";
 import { Image } from "expo-image";
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ViewProps } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BackBtn from "App/assets/icons/backbtn.svg";
@@ -30,6 +30,7 @@ export default function LoginPage(
 ) {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: ApiServiceAuth.LoginMutation,
@@ -37,6 +38,9 @@ export default function LoginPage(
       setTimeout(() => {
         navigation.navigate("Onboarding");
       }, 2000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
       setTimeout(() => {
         login();
       }, 1000);
@@ -57,7 +61,10 @@ export default function LoginPage(
       password: "",
     },
     validationSchema: LoginSchema,
-    onSubmit: (values) => mutate(values),
+    onSubmit: (values) => {
+      mutate(values);
+      setLoading(true);
+    },
   });
   return (
     <OnboardLayout
@@ -69,7 +76,7 @@ your account"
       children={
         <View style={style.body}>
           <ErrorCard error={error} />
-          {isPending && <Loader />}
+          {loading ? <Loader /> : <Text></Text>}
           <FormInput
             label="Email Address"
             placeholder="Enter your email address"
